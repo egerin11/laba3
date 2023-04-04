@@ -52,12 +52,12 @@ Pixel *readPixels(FILE *file,const  BMPImage *image) {
 
 BMPImage *readImage(const char *fileName) {
     BMPImage *image = (BMPImage *) malloc(sizeof(BMPImage));
-    if (!image) {
+    if (image == NULL || !image) {
         printf("Unable to allocate memory\n");
         return NULL;
     }
     FILE *file = fopen(fileName, "rb");
-    if (!file) {
+    if (file == NULL || !file) {
         printf("Unable to open file\n");
         free(image);
         return NULL;

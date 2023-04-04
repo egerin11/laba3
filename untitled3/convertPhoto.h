@@ -5,7 +5,7 @@
 
 void convert(BMPImage *oldImage, const char *fileName, int choice);
 
-void switchForConvert(int choice, int dataSize, BMPImage *oldImage, BMPImage blackAndWhite);
+void switchForConvert(int choice, int dataSize,const BMPImage *oldImage, BMPImage blackAndWhite);
 
 void convertBlackAndWhite(const BMPImage *oldImage, BMPImage blackAndWhite, int dataSize);
 

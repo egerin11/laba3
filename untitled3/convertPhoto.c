@@ -41,7 +41,7 @@ void convert(BMPImage *oldImage, const char *fileName, int choice) {
     fclose(file);
 }
 
-void switchForConvert(int choice, int dataSize, BMPImage *oldImage, BMPImage blackAndWhite) {
+void switchForConvert(int choice, int dataSize, const BMPImage *oldImage, BMPImage blackAndWhite) {
     switch (choice) {
         case 1: {
             convertBlackAndWhite(oldImage, blackAndWhite, dataSize);

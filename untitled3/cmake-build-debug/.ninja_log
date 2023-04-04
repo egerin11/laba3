@@ -49,3 +49,7 @@
 0	20	1680627338396832988	CMakeFiles/untitled3.dir/main.c.o	cb4ab63f5cc6cec1
 0	37	1680627338413499532	CMakeFiles/untitled3.dir/convertPhoto.c.o	6e970fd9402c5171
 37	54	1680627338430166076	untitled3	aedd4d384eb18b79
+0	49	1680628451522034118	CMakeFiles/untitled3.dir/main.c.o	cb4ab63f5cc6cec1
+1	49	1680628451522034118	CMakeFiles/untitled3.dir/tools.c.o	25e1b0ba0b44d799
+1	58	1680628451532034045	CMakeFiles/untitled3.dir/convertPhoto.c.o	6e970fd9402c5171
+59	84	1680628451555367209	untitled3	aedd4d384eb18b79
