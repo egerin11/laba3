@@ -52,9 +52,9 @@ void switchForConvert(int choice, int dataSize, BMPImage *oldImage, BMPImage bla
         }
             break;
         case 3: {
-            int number = 0;
-            int numberTwo = 0;
-            int numberThree = 0;
+            double number = 0;
+            double numberTwo = 0;
+            double numberThree = 0;
             inputDataForGamma(&number, &numberTwo, &numberThree);
             gammaConvert(blackAndWhite, number, numberTwo, numberThree);
         }
@@ -72,8 +72,8 @@ void switchForConvert(int choice, int dataSize, BMPImage *oldImage, BMPImage bla
     }
 }
 
-void convertBlackAndWhite(BMPImage *oldImage, BMPImage blackAndWhite, const int dataSize) {
-    Pixel *pixel = oldImage->pixels;
+void convertBlackAndWhite(const BMPImage *oldImage, BMPImage blackAndWhite, const int dataSize) {
+    const Pixel *pixel = oldImage->pixels;
     for (int i = 0; i < dataSize; i++) {
         unsigned char gray = (unsigned char) ((0.3 * pixel[i].red) + pixel[i].blue * 0.11 + pixel[i].green * 0.59);
         blackAndWhite.pixels[i].red = gray;
@@ -82,8 +82,8 @@ void convertBlackAndWhite(BMPImage *oldImage, BMPImage blackAndWhite, const int 
     }
 }
 
-void convertNegative(BMPImage *oldImage, BMPImage blackAndWhite, const int dataSize) {
-    Pixel *pixel = oldImage->pixels;
+void convertNegative(const BMPImage *oldImage, BMPImage blackAndWhite, const int dataSize) {
+    const Pixel *pixel = oldImage->pixels;
     for (int i = 0; i < dataSize; i++) {
 
         blackAndWhite.pixels[i].red = 255 - pixel[i].red;
@@ -93,8 +93,8 @@ void convertNegative(BMPImage *oldImage, BMPImage blackAndWhite, const int dataS
 }
 
 int comparePixels(const void *a, const void *b) {
-    Pixel pixelA = *(Pixel *) a;
-    Pixel pixelB = *(Pixel *) b;
+    const Pixel pixelA = *(Pixel *) a;
+    const Pixel pixelB = *(Pixel *) b;
 
     unsigned int brightnessA = (pixelA.red + pixelA.green + pixelA.blue) / 3;
     unsigned int brightnessB = (pixelB.red + pixelB.green + pixelB.blue) / 3;
@@ -162,6 +162,6 @@ void gammaConvert(BMPImage blackAndWhite, double gammaOne, double gammaTwo, doub
         double blue = power((double) blackAndWhite.pixels[i].blue / 255, (int) (1.0 / gammaThree)) * 255;
         blackAndWhite.pixels[i].red = (unsigned char) min(max((int) red, 0), 255);
         blackAndWhite.pixels[i].green = (unsigned char) min(max((int) green, 0), 255);
-        blackAndWhite.pixels[i].blue = (unsigned) min(max((int) blue, 0), 255);
+        blackAndWhite.pixels[i].blue = (unsigned char) min(max((int) blue, 0), 255);
     }
 }

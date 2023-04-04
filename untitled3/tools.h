@@ -5,7 +5,7 @@
 #include<stdio.h>
 void getString(char **string);
 BMPImage *readImage(const char *fileName);
-void printDataOfPixel(BMPImage *image);
+void printDataOfPixel(const BMPImage *image);
 void freeMemory(BMPImage *image);
-void readPixels(FILE *file,BMPImage *image);
+void readPixels(FILE *file,const BMPImage *image);
 #endif

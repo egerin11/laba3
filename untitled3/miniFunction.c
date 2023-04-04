@@ -43,6 +43,18 @@ bool check(int *number) {
     return scanf("%d", number) != 1 || getchar() != '\n';
 }
 
+bool checkGamma(double *number) {
+    return scanf("%lf", number) != 1 || getchar() != '\n';
+
+}
+
+void inputGamma(double *number) {
+    while (checkGamma(number)) {
+        printf("Enter a valid number: ");
+        rewind(stdin);
+    }
+}
+
 void inputNumber(int *number) {
     while (check(number)) {
         printf("Enter a valid number: ");
@@ -51,10 +63,10 @@ void inputNumber(int *number) {
 
 }
 
-void inputDataForGamma(int *number, int *numberTwo, int *numberThree) {
-    inputNumber(number);
-    inputNumber(numberTwo);
-    inputNumber(numberThree);
+void inputDataForGamma(double *number, double *numberTwo, double *numberThree) {
+    inputGamma(number);
+    inputGamma(numberTwo);
+    inputGamma(numberThree);
 
 }
 

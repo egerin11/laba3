@@ -11,11 +11,19 @@ int min(int a, int b);
 int max(int a, int b);
 
 void clearScreen();
+
 void menu();
+
 bool check(int *number);
 
 void inputNumber(int *number);
 
-void inputDataForGamma(int *number, int *numberTwo, int *numberThree);
-void inputDataForMedian(int *number,int *numberTwo);
+bool checkGamma(double *number);
+
+void inputGamma(double *number);
+
+void inputDataForGamma(double *number, double *numberTwo, double *numberThree);
+
+void inputDataForMedian(int *number, int *numberTwo);
+
 #endif //UNTITLED3_MINIFUNCTION_H

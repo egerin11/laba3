@@ -29,7 +29,7 @@ void getString(char **string) {
 }
 
 
-Pixel *readPixels(FILE *file, BMPImage *image) {
+Pixel *readPixels(FILE *file,const  BMPImage *image) {
     int dataSize = image->imageHeader.width * image->imageHeader.height;
     int bytesPP = image->imageHeader.bpp / 8;
     int rowSize = (image->imageHeader.width * bytesPP);
@@ -40,8 +40,7 @@ Pixel *readPixels(FILE *file, BMPImage *image) {
     unsigned char *buffer = (unsigned char *) malloc(bytesPP * sizeof(unsigned char));
     for (int i = 0; i < dataSize; i++) {
         fread(buffer, bytesPP, 1, file);
-
-        if (bytesPP == 3) {
+        if (buffer != NULL && bytesPP == 3) {
             pixels[i].blue = buffer[0];
             pixels[i].green = buffer[1];
             pixels[i].red = buffer[2];
@@ -81,12 +80,12 @@ BMPImage *readImage(const char *fileName) {
     return image;
 }
 
-void printDataOfPixel(BMPImage *image) {
+void printDataOfPixel(const BMPImage *image) {
     if (image == NULL || image->pixels == NULL) {
         printf("Error: invalid image or pixel data\n");
         return;
     }
-    Pixel *p = image->pixels;
+   const  Pixel *p = image->pixels;
     int dataSize = image->imageHeader.width * image->imageHeader.height;
     for (int i = 0; i < dataSize; i++) {
 

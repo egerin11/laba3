@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/egerin/untitled3/cmake-build-debug"
+			"value" : "/home/egerin/laba3Sem2/untitled3/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -415,7 +415,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/egerin/untitled3/cmake-build-debug/CMakeFiles/pkgRedirects"
+			"value" : "/home/egerin/laba3Sem2/untitled3/cmake-build-debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -475,7 +475,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/egerin/untitled3"
+			"value" : "/home/egerin/laba3Sem2/untitled3"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -1019,7 +1019,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/egerin/untitled3/cmake-build-debug"
+			"value" : "/home/egerin/laba3Sem2/untitled3/cmake-build-debug"
 		},
 		{
 			"name" : "untitled3_IS_TOP_LEVEL",
@@ -1043,7 +1043,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/egerin/untitled3"
+			"value" : "/home/egerin/laba3Sem2/untitled3"
 		}
 	],
 	"kind" : "cache",
