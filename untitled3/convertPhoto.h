@@ -14,7 +14,8 @@ void convertNegative(const BMPImage *oldImage, BMPImage blackAndWhite, int dataS
 int comparePixels(const void *a, const void *b);
 
 Pixel **memoryPixel(BMPImage blackAndWhite);
-void medianFilter(BMPImage blackAndWhite, int imageWidth, int imageHeight);
+void getMedian(int *index,int x,int y,int windowWidth ,int windowHeight,BMPImage blackAndWhite,Pixel window[]);
+void medianFilter( BMPImage blackAndWhite, int imageWidth, int imageHeight);
 
 
 void gammaConvert(BMPImage blackAndWhite, double gammaOne, double gammaTwo, double gammaThree);

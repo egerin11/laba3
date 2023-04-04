@@ -116,8 +116,25 @@ Pixel **memoryPixel(BMPImage blackAndWhite) {
     }
     return outputPixels;
 }
-
-void medianFilter(BMPImage blackAndWhite, int windowWidth, int windowHeight) {
+void getMedian(int *index,int x,int y,int windowWidth ,int windowHeight,const BMPImage blackAndWhite,Pixel window[])
+{  int edgeX = windowWidth / 2;
+    int edgeY = windowHeight / 2;
+    for (int fx = 0; fx < windowWidth; fx++) {
+        for (int fy = 0; fy < windowHeight; fy++) {
+            int pixelIndex = (x + fx - edgeX) * blackAndWhite.imageHeader.width + (y + fy - edgeY);
+            if (x + fx - edgeX >= 0 && x + fx - edgeX < blackAndWhite.imageHeader.width
+                && y + fy - edgeY >= 0 && y + fy - edgeY < blackAndWhite.imageHeader.height) {
+                window[*index].red = 0;
+                window[*index].green = 0;
+                window[*index].blue = 0;
+            } else {
+                window[*index] = blackAndWhite.pixels[pixelIndex];
+            }
+            (*index)++;
+        }
+    }
+}
+void medianFilter(const BMPImage blackAndWhite, int windowWidth, int windowHeight) {
     if (windowHeight < 0 || windowWidth < 0) {
         printf("input error");
         return;
@@ -129,20 +146,7 @@ void medianFilter(BMPImage blackAndWhite, int windowWidth, int windowHeight) {
     for (int x = edgeX; x < blackAndWhite.imageHeader.width - edgeX; x++) {
         for (int y = edgeY; y < blackAndWhite.imageHeader.height - edgeY; y++) {
             int index = 0;
-            for (int fx = 0; fx < windowWidth; fx++) {
-                for (int fy = 0; fy < windowHeight; fy++) {
-                    int pixelIndex = (x + fx - edgeX) * blackAndWhite.imageHeader.width + (y + fy - edgeY);
-                    if (x + fx - edgeX >= 0 && x + fx - edgeX < blackAndWhite.imageHeader.width
-                        && y + fy - edgeY >= 0 && y + fy - edgeY < blackAndWhite.imageHeader.height) {
-                        window[index].red = 0;
-                        window[index].green = 0;
-                        window[index].blue = 0;
-                    } else {
-                        window[index] = blackAndWhite.pixels[pixelIndex];
-                    }
-                    index++;
-                }
-            }
+            getMedian(&index,x,y,windowWidth,windowHeight,blackAndWhite,window);
             qsort(window, index, sizeof(Pixel), comparePixels);
             outputPixels[x][y] = window[(windowWidth * windowHeight) / 2];
             blackAndWhite.pixels[x * blackAndWhite.imageHeader.height + y] = outputPixels[x][y];
@@ -150,7 +154,6 @@ void medianFilter(BMPImage blackAndWhite, int windowWidth, int windowHeight) {
         free(outputPixels[x]);
     }
     free(outputPixels);
-
 }
 
 
