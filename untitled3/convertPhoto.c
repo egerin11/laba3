@@ -132,8 +132,8 @@ void medianFilter(BMPImage blackAndWhite, int windowWidth, int windowHeight) {
             for (int fx = 0; fx < windowWidth; fx++) {
                 for (int fy = 0; fy < windowHeight; fy++) {
                     int pixelIndex = (x + fx - edgeX) * blackAndWhite.imageHeader.width + (y + fy - edgeY);
-                    if (pixelIndex < 0 ||
-                        pixelIndex >= blackAndWhite.imageHeader.width * blackAndWhite.imageHeader.height) {
+                    if (x + fx - edgeX >= 0 && x + fx - edgeX < blackAndWhite.imageHeader.width
+                        && y + fy - edgeY >= 0 && y + fy - edgeY < blackAndWhite.imageHeader.height) {
                         window[index].red = 0;
                         window[index].green = 0;
                         window[index].blue = 0;
