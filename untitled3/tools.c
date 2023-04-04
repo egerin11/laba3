@@ -2,7 +2,7 @@
 #include<stdlib.h>
 #include<stdbool.h>
 #include"struct.h"
-
+#include<string.h>
 void getString(char **string) {
     int size = 0;
     int realSize = 8;
@@ -29,7 +29,7 @@ void getString(char **string) {
 }
 
 
-Pixel *readPixels(FILE *file,const  BMPImage *image) {
+Pixel *readPixels(FILE *file, const BMPImage *image) {
     int dataSize = image->imageHeader.width * image->imageHeader.height;
     int bytesPP = image->imageHeader.bpp / 8;
     int rowSize = (image->imageHeader.width * bytesPP);
@@ -38,6 +38,7 @@ Pixel *readPixels(FILE *file,const  BMPImage *image) {
     fseek(file, pixelOffset, SEEK_SET);
     Pixel *pixels = (Pixel *) malloc(dataSize * sizeof(Pixel));
     unsigned char *buffer = (unsigned char *) malloc(bytesPP * sizeof(unsigned char));
+    memset(buffer, 0, bytesPP * sizeof(unsigned char));
     for (int i = 0; i < dataSize; i++) {
         fread(buffer, bytesPP, 1, file);
         if (buffer != NULL && bytesPP == 3) {
@@ -85,7 +86,7 @@ void printDataOfPixel(const BMPImage *image) {
         printf("Error: invalid image or pixel data\n");
         return;
     }
-   const  Pixel *p = image->pixels;
+    const Pixel *p = image->pixels;
     int dataSize = image->imageHeader.width * image->imageHeader.height;
     for (int i = 0; i < dataSize; i++) {
 

@@ -5,7 +5,7 @@
 #include <string.h>
 #include "minifunction.h"
 
-void convert(BMPImage *oldImage, const char *fileName, int choice) {
+void convert(const BMPImage *oldImage, const char *fileName, int choice) {
     if (oldImage == NULL) {
         printf("Input image is NULL\n");
         return;
@@ -93,8 +93,8 @@ void convertNegative(const BMPImage *oldImage, BMPImage blackAndWhite, const int
 }
 
 int comparePixels(const void *a, const void *b) {
-    const Pixel pixelA = *(Pixel *) a;
-    const Pixel pixelB = *(Pixel *) b;
+    const Pixel pixelA = *(const Pixel *) a;
+    const Pixel pixelB = *(const Pixel *) b;
 
     unsigned int brightnessA = (pixelA.red + pixelA.green + pixelA.blue) / 3;
     unsigned int brightnessB = (pixelB.red + pixelB.green + pixelB.blue) / 3;
