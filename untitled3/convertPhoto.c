@@ -145,7 +145,7 @@ void medianFilter(BMPImage blackAndWhite, int windowWidth, int windowHeight) {
             }
             qsort(window, index, sizeof(Pixel), comparePixels);
             outputPixels[x][y] = window[(windowWidth * windowHeight) / 2];
-            blackAndWhite.pixels[x * blackAndWhite.imageHeader.width + y] = outputPixels[x][y];
+            blackAndWhite.pixels[x * blackAndWhite.imageHeader.height + y] = outputPixels[x][y];
         }
         free(outputPixels[x]);
     }
